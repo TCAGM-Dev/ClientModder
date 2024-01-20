@@ -66,9 +66,9 @@
             const answer = await rl.question(`Include "${mod.name}? (y/n) `)
             if (answer == "n") continue
         }
+        console.log(`Downloading "${mod.name}"`)
 
         if (mod.platform == "modrinth") {
-
             const request = https.get(`https://api.modrinth.com/v2/project/${mod.id}/version?loaders=${encodeURIComponent(JSON.stringify([modloader]))}&game_versions=${encodeURIComponent(JSON.stringify([mcversion]))}`)
             const response = await new Promise(r => request.on("response", r))
             if (response.statusCode == 200) {
@@ -93,6 +93,9 @@
         }
     }
 
-    process.exit()
+    setTimeout(() => {
+        console.log(`Installed ${installedmods.length} mods`)
+        process.exit()
+    }, 500)
 
 })()
