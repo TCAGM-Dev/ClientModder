@@ -56,17 +56,18 @@
     const installedmods = []
 
     for (const mod of moddata) {
+        if (mod.incompatible && mod.incompatible.some(v => installedmods.includes(v))) {
+            continue
+        }
+        if (mod.dependencies && !mod.dependencies.some(v => installedmods.includes(v))) {
+            continue
+        }
+        if (mod.ask == true) {
+            const answer = await rl.question(`Include "${mod.name}? (y/n) `)
+            if (answer == "n") continue
+        }
+
         if (mod.platform == "modrinth") {
-            if (mod.incompatible && mod.incompatible.some(v => installedmods.includes(v))) {
-                continue
-            }
-            if (mod.dependencies && !mod.dependencies.some(v => installedmods.includes(v))) {
-                continue
-            }
-            if (mod.ask == true) {
-                const answer = await rl.question(`Include "${mod.name}? (y/n) `)
-                if (answer == "n") continue
-            }
 
             const request = https.get(`https://api.modrinth.com/v2/project/${mod.id}/version?loaders=${encodeURIComponent(JSON.stringify([modloader]))}&game_versions=${encodeURIComponent(JSON.stringify([mcversion]))}`)
             const response = await new Promise(r => request.on("response", r))
