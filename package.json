@@ -1,0 +1,16 @@
+{
+  "name": "clientmodder",
+  "version": "1.0.0",
+  "description": "Automatically downloads all best minecraft mods for any modloader and modloader version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ClientModder"
+  },
+  "dependencies": {
+    "puppeteer": "^21.7.0"
+  }
+}
