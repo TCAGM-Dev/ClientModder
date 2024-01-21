@@ -66,7 +66,6 @@
             const answer = await rl.question(`Include "${mod.name}? (y/n) `)
             if (answer == "n") continue
         }
-        console.log(`Downloading "${mod.name}"`)
 
         if (mod.platform == "modrinth") {
             const request = https.get(`https://api.modrinth.com/v2/project/${mod.id}/version?loaders=${encodeURIComponent(JSON.stringify([modloader]))}&game_versions=${encodeURIComponent(JSON.stringify([mcversion]))}`)
@@ -81,9 +80,11 @@
                 const versions = JSON.parse(data)
 
                 if (versions.length > 0) {
+                    console.log(`Downloading "${mod.name}"`)
+                    
                     const url = versions[0].files[0].url
                     https.get(url, res => {
-                        res.pipe(fs.createWriteStream(path.join(folderpath, path.basename(url))))
+                        res.pipe(fs.createWriteStream(path.join(folderpath, decodeURIComponent(path.basename(url)))))
                     })
                     installedmods.push(mod.id)
                 }
@@ -94,7 +95,7 @@
     }
 
     setTimeout(() => {
-        console.log(`Installed ${installedmods.length} mods`)
+        console.log(`Downloaded ${installedmods.length} mods`)
         process.exit()
     }, 500)
 
