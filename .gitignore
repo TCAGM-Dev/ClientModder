@@ -2,5 +2,5 @@
 .env
 node_modules/
 package-lock.json
-modinfo.json
+*modinfo.json
 mods/
