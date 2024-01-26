@@ -1,13 +1,51 @@
-(async ()=>{
+require("dotenv").config()
+const fs = require("fs")
+const path = require("path")
+const https = require("https")
+const rl = require("node:readline/promises").createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
 
-    require("dotenv").config()
-    const fs = require("fs")
-    const path = require("path")
-    const https = require("https")
-    const rl = require("node:readline/promises").createInterface({
-        input: process.stdin,
-        output: process.stdout
+function apiGet(url, options) {
+    const request = https.get(url, options)
+    return new Promise(async (resolve, reject) => {
+        const response = await new Promise(r => request.on("response", r))
+
+        if (response.statusCode != 200) return reject()
+
+        let data = ""
+        response.on("data", chunk => {
+            data += chunk
+        })
+        response.setTimeout(5000, reject)
+        response.on("end", () => {
+            resolve(JSON.parse(data))
+        })
     })
+}
+
+async function curseforgeGet(path, options = {}) {
+    if (!options.headers) options.headers = {}
+    options.headers["x-api-key"] = process.env.CURSEFORGE_API_KEY
+    return apiGet("https://api.curseforge.com" + path, options)
+}
+
+async function download(source, destination) {
+    const request = https.get(source)
+    request.setTimeout(5000, () => {
+        request.destroy()
+        download(source, destination)
+    })
+    const response = await new Promise(r => request.on("response", r))
+    if (response.statusCode == 302 || response.statusCode == 301) {
+        return download(response.headers.location, destination)
+    }
+    response.pipe(fs.createWriteStream(destination))
+    return new Promise(r => request.on("close", r))
+}
+
+(async ()=>{
 
     const datasource = process.env.JSON_SOURCE
 
@@ -45,8 +83,15 @@
         throw new Error("Could not delete files")
     }
 
-    const supportedversions = ["1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20", "1.19.4", "1.19.3", "1.19.2", "1.19.1", "1.19", "1.18.2", "1.18.1", "1.18", "1.17.1", "1.17", "1.16.5", "1.16.4", "1.16.3", "1.16.2", "1.16.1", "1.16", "1.15.2", "1.15.1", "1.15", "1.14.4", "1.14.3", "1.14.2", "1.14.1", "1.14", "1.13.2", "1.13.1", "1.13", "1.12.2", "1.12.1", "1.12"]
-    const supportedmodloaders = ["forge", "fabric", "quilt", "neoforge"]
+    const supportedversions = data.supportedGameVersions
+    const supportedmodloaders = data.supportedModLoaders
+
+    if (supportedversions == null || typeof supportedversions != "object" || supportedversions.length <= 0) {
+        throw new Error(`Invalid supported versions array "${supportedversions}"`)
+    }
+    if (supportedmodloaders == null || typeof supportedmodloaders != "object" || supportedmodloaders.length <= 0) {
+        throw new Error(`Invalid supported modloaders array "${supportedmodloaders}"`)
+    }
 
     let modloader
     let mcversion
@@ -74,7 +119,7 @@
                 console.warn("Vanilla Curseforge instance detected")
                 process.exit()
             }
-            modloader = ["forge", null, null, "fabric", "quilt", "neoforge"][basemodloader.type - 1]
+            modloader = [null, "forge", "cauldron", "liteloader", "fabric", "quilt", "neoforge"][basemodloader.type]
             console.log(`Modloader "${modloader}" detected`)
             mcversion = data.BaseModLoader.minecraftVersion
             console.log(`Version "${mcversion}" detected`)
@@ -105,6 +150,8 @@
         }
     }
 
+    const curseforgemodloaderid = [null, "forge", "cauldron", "liteloader", "fabric", "quilt", "neoforge"].findIndex(v => v == modloader)
+
     let categories = ["basic", "library", "optimization", "visual", "qol", "utility", "other"]
     {
         const answer = (await rl.question("Include only optimization mods? (y/n) ")).toLowerCase()
@@ -131,37 +178,30 @@
         }
 
         if (mod.platform == "modrinth") {
-            const request = https.get(`https://api.modrinth.com/v2/project/${mod.id}/version?loaders=${encodeURIComponent(JSON.stringify([modloader]))}&game_versions=${encodeURIComponent(JSON.stringify([mcversion]))}`)
-            const response = await new Promise(r => request.on("response", r))
-            if (response.statusCode == 200) {
-                let data = ""
-                response.on("data", chunk => {
-                    data += chunk
-                })
-                await new Promise(r => response.on("end", r))
+            const versions = await apiGet(`https://api.modrinth.com/v2/project/${mod.id}/version?loaders=${encodeURIComponent(JSON.stringify([modloader]))}&game_versions=${encodeURIComponent(JSON.stringify([mcversion]))}`).catch(console.error())
 
-                const versions = JSON.parse(data)
-
-                if (versions.length > 0) {
+            if (versions.length > 0) {
+                console.log(`Downloading "${mod.name}"`)
+                
+                const url = versions[0].files[0].url
+                downloads.push(download(url, path.join(modfolderpath, path.basename(decodeURIComponent(url)))))
+                installedmods.push(mod.id)
+            }
+        } else if (mod.platform == "curseforge") {
+            if (process.env.CURSEFORGE_API_KEY == null) {
+                console.log(`Failed to download "${mod.name}" because of missing Curseforge API key`)
+            } else {
+                const mdata = await curseforgeGet(`/v1/mods/${mod.id}`)
+                const files = mdata.data.latestFilesIndexes
+                const matchingfiles = files.filter(file => file.gameVersion == mcversion && file.modLoader == curseforgemodloaderid)
+                if (matchingfiles.length > 0) {
                     console.log(`Downloading "${mod.name}"`)
-                    
-                    const url = versions[0].files[0].url
-                    function downloadMod() {
-                        const request = https.get(url)
-                        request.on("response", res => {
-                            res.pipe(fs.createWriteStream(path.join(modfolderpath, decodeURIComponent(path.basename(url)))))
-                        })
-                        request.setTimeout(5000, () => {
-                            request.destroy()
-                            downloadMod()
-                        })
-                        downloads.push(new Promise(r => request.on("close", r)))
-                    }
-                    downloadMod()
+
+                    const file = matchingfiles[0]
+                    const url = (await curseforgeGet(`/v1/mods/${mod.id}/files/${file.fileId}/download-url`)).data
+                    downloads.push(download(url, path.join(modfolderpath, path.basename(url))))
                     installedmods.push(mod.id)
                 }
-            } else {
-                response.pipe(process.stdout)
             }
         }
     }
