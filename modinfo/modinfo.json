@@ -709,6 +709,69 @@
             "type": "basic"
         },
         {
+            "name": "Better Beds",
+            "platform": "modrinth",
+            "id": "better-beds",
+            "type": "optimization"
+        },
+        {
+            "name": "Better Beds Reforged",
+            "platform": "modrinth",
+            "id": "better-beds-reforged",
+            "type": "optimization",
+            "incompatible": ["better-beds"]
+        },
+        {
+            "name": "Very Many Players (Fabric)",
+            "platform": "modrinth",
+            "id": "vmp-fabric",
+            "type": "optimization"
+        },
+        {
+            "name": "Very Many Players (Forge)",
+            "platform": "modrinth",
+            "id": "vmp-forge",
+            "type": "optimization",
+            "incompatible": ["vmp-fabric"]
+        },
+        {
+            "name": "Advancements Debug",
+            "platform": "modrinth",
+            "id": "advancements-debug",
+            "type": "optimization"
+        },
+        {
+            "name": "Entity View Distance",
+            "platform": "modrinth",
+            "id": "entity-view-distance",
+            "type": "optimization"
+        },
+        {
+            "name": "FoamFix",
+            "platform": "modrinth",
+            "id": "foamfix",
+            "type": "optimization"
+        },
+        {
+            "name": "Too Many Players",
+            "platform": "modrinth",
+            "id": "tmp",
+            "type": "optimization"
+        },
+        {
+            "name": "Bedrodium",
+            "platform": "modrinth",
+            "id": "bedrodium",
+            "type": "optimization",
+            "dependencies": ["sodium"]
+        },
+        {
+            "name": "BadOptimizations",
+            "platform": "modrinth",
+            "id": "badoptimizations",
+            "type": "optimization"
+        },
+        {
             "name": "CreativeCore",
             "platform": "modrinth",
             "id": "creativecore",
