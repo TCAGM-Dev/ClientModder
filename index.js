@@ -77,7 +77,7 @@ async function download(source, destination) {
         if (!text || text == "") {
             throw new Error(`No data recieved from "${process.env.JSON_PATH}"`)
         }
-        const data = JSON.parse(text)
+        data = JSON.parse(text)
         if (!data) {
             throw new Error(`Invalid data recieved from "${process.env.JSON_PATH}"`)
         }
