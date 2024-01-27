@@ -1,0 +1,802 @@
+{
+    "supportedModLoaders": ["forge", "fabric", "quilt", "neoforge"],
+    "supportedGameVersions": ["1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20", "1.19.4", "1.19.3", "1.19.2", "1.19.1", "1.19", "1.18.2", "1.18.1", "1.18", "1.17.1", "1.17", "1.16.5", "1.16.4", "1.16.3", "1.16.2", "1.16.1", "1.16", "1.15.2", "1.15.1", "1.15", "1.14.4", "1.14.3", "1.14.2", "1.14.1", "1.14", "1.13.2", "1.13.1", "1.13", "1.12.2", "1.12.1", "1.12"],
+    "mods": [
+        {
+            "name": "Fabric API",
+            "platform": "modrinth",
+            "id": "fabric-api",
+            "type": "basic"
+        },
+        {
+            "name": "Mod Menu",
+            "platform": "modrinth",
+            "id": "modmenu",
+            "type": "basic"
+        },
+        {
+            "name": "Sodium",
+            "platform": "modrinth",
+            "id": "sodium",
+            "type": "optimization"
+        },
+        {
+            "name": "Lithium",
+            "platform": "modrinth",
+            "id": "lithium",
+            "type": "optimization"
+        },
+        {
+            "name": "Canary",
+            "platform": "modrinth",
+            "id": "canary",
+            "incompatible": ["lithium"],
+            "type": "optimization"
+        },
+        {
+            "name": "Starlight",
+            "platform": "modrinth",
+            "id": "starlight",
+            "type": "optimization"
+        },
+        {
+            "name": "Phosphor",
+            "platform": "modrinth",
+            "id": "phosphor",
+            "incompatible": ["starlight"],
+            "type": "optimization"
+        },
+        {
+            "name": "Iris Shaders",
+            "platform": "modrinth",
+            "id": "iris",
+            "ask": true,
+            "dependencies": ["sodium"],
+            "type": "visual"
+        },
+        {
+            "name": "Sodium Extra",
+            "platform": "modrinth",
+            "id": "sodium-extra",
+            "dependencies": ["sodium"],
+            "type": "optimization"
+        },
+        {
+            "name": "Entity Culling",
+            "platform": "modrinth",
+            "id": "entityculling",
+            "type": "optimization"
+        },
+        {
+            "name": "LazyDFU",
+            "platform": "modrinth",
+            "id": "lazydfu",
+            "type": "optimization"
+        },
+        {
+            "name": "Memory Leak Fix",
+            "platform": "modrinth",
+            "id": "memoryleakfix",
+            "type": "optimization"
+        },
+        {
+            "name": "FPS Reducer",
+            "platform": "modrinth",
+            "id": "fps-reducer",
+            "type": "optimization"
+        },
+        {
+            "name": "Dynamic FPS",
+            "platform": "modrinth",
+            "id": "dynamic-fps",
+            "incompatible": ["fps-reducer"],
+            "type": "optimization"
+        },
+        {
+            "name": "ImmediatelyFast",
+            "platform": "modrinth",
+            "id": "immediatelyfast",
+            "type": "optimization"
+        },
+        {
+            "name": "AppleSkin",
+            "platform": "modrinth",
+            "id": "appleskin",
+            "type": "qol"
+        },
+        {
+            "name": "Krypton",
+            "platform": "modrinth",
+            "id": "krypton",
+            "type": "optimization"
+        },
+        {
+            "name": "No Chat Reports",
+            "platform": "modrinth",
+            "id": "no-chat-reports",
+            "type": "basic"
+        },
+        {
+            "name": "BetterF3",
+            "platform": "modrinth",
+            "id": "betterf3",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "More Culling",
+            "platform": "modrinth",
+            "id": "moreculling",
+            "type": "optimization"
+        },
+        {
+            "name": "Enhanced Block Entities",
+            "platform": "modrinth",
+            "id": "ebe",
+            "type": "optimization"
+        },
+        {
+            "name": "Concurrent Chunk Management Engine",
+            "platform": "modrinth",
+            "id": "c2me-fabric",
+            "type": "optimization"
+        },
+        {
+            "name": "FastLoad",
+            "platform": "modrinth",
+            "id": "fastload",
+            "type": "optimization"
+        },
+        {
+            "name": "Just Enough Items",
+            "platform": "modrinth",
+            "id": "jei",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "ModernFix",
+            "platform": "modrinth",
+            "id": "modernfix",
+            "type": "optimization"
+        },
+        {
+            "name": "Smooth Boot",
+            "platform": "modrinth",
+            "id": "smoothboot-fabric",
+            "type": "optimization"
+        },
+        {
+            "name": "Xaero's Minimap",
+            "platform": "modrinth",
+            "id": "xaeros-minimap",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "Xaero's World Map",
+            "platform": "modrinth",
+            "id": "xaeros-world-map",
+            "dependencies": ["xaeros-minimap"],
+            "type": "qol"
+        },
+        {
+            "name": "Voxelmap",
+            "platform": "modrinth",
+            "id": "voxelmap-updated",
+            "ask": true,
+            "incompatible": ["xaeros-minimap"],
+            "type": "qol"
+        },
+        {
+            "name": "JourneyMap",
+            "platform": "modrinth",
+            "id": "journeymap",
+            "ask": true,
+            "incompatible": ["voxelmap-updated", "xaeros-minimap"],
+            "type": "qol"
+        },
+        {
+            "name": "Fabrishot",
+            "platform": "modrinth",
+            "id": "fabrishot",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "AmbientSounds",
+            "platform": "modrinth",
+            "id": "ambientsounds",
+            "ask": true,
+            "type": "other"
+        },
+        {
+            "name": "FastQuit",
+            "platform": "modrinth",
+            "id": "fastquit",
+            "type": "optimization"
+        },
+        {
+            "name": "DashLoader",
+            "platform": "modrinth",
+            "id": "dashloader",
+            "type": "optimization"
+        },
+        {
+            "name": "Better Ping Display",
+            "platform": "modrinth",
+            "id": "better-ping-display-fabric",
+            "type": "qol"
+        },
+        {
+            "name": "Bobby",
+            "platform": "modrinth",
+            "id": "bobby",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Replay Mod",
+            "platform": "modrinth",
+            "id": "replaymod",
+            "ask": true,
+            "type": "utility"
+        },
+        {
+            "name": "Not Enough Crashes",
+            "platform": "modrinth",
+            "id": "notenoughcrashes",
+            "type": "basic"
+        },
+        {
+            "name": "ESSENTIAL",
+            "platform": "modrinth",
+            "id": "essential",
+            "ask": true,
+            "type": "other"
+        },
+        {
+            "name": "e4mc",
+            "platform": "modrinth",
+            "id": "e4mc",
+            "ask": true,
+            "incompatible": ["essential"],
+            "type": "utility"
+        },
+        {
+            "name": "Spark",
+            "platform": "modrinth",
+            "id": "spark",
+            "ask": true,
+            "type": "utility"
+        },
+        {
+            "name": "Let Me Despawn",
+            "platform": "modrinth",
+            "id": "lmd",
+            "type": "optimization"
+        },
+        {
+            "name": "Exordium",
+            "platform": "modrinth",
+            "id": "exordium",
+            "type": "optimization"
+        },
+        {
+            "name": "FastAnim",
+            "platform": "modrinth",
+            "id": "fastanim",
+            "type": "optimization"
+        },
+        {
+            "name": "Controlling",
+            "platform": "modrinth",
+            "id": "controlling",
+            "type": "basic"
+        },
+        {
+            "name": "Embeddium",
+            "platform": "modrinth",
+            "id": "embeddium",
+            "incompatible": ["sodium"],
+            "type": "optimization"
+        },
+        {
+            "name": "Rubidium",
+            "platform": "modrinth",
+            "id": "rubidium",
+            "incompatible": ["embeddium"],
+            "type": "optimization"
+        },
+        {
+            "name": "ThreadTweak",
+            "platform": "modrinth",
+            "id": "threadtweak",
+            "type": "optimization"
+        },
+        {
+            "name": "Oculus",
+            "platform": "modrinth",
+            "id": "oculus",
+            "dependencies": ["embeddium", "rubidium"],
+            "type": "visual"
+        },
+        {
+            "name": "Highlight",
+            "platform": "modrinth",
+            "id": "highlight",
+            "type": "basic"
+        },
+        {
+            "name": "Item Model Fix",
+            "platform": "modrinth",
+            "id": "item-model-fix",
+            "type": "basic"
+        },
+        {
+            "name": "Nvidium",
+            "platform": "modrinth",
+            "id": "nvidium",
+            "type": "optimization"
+        },
+        {
+            "name": "ViaFabricPlus",
+            "platform": "modrinth",
+            "id": "viafabricplus",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "Noxesium",
+            "platform": "modrinth",
+            "id": "noxesium",
+            "type": "optimization"
+        },
+        {
+            "name": "Entity Collision FPS Fix",
+            "platform": "modrinth",
+            "id": "entity-collision-fps-fix",
+            "type": "optimization"
+        },
+        {
+            "name": "Embeddium Extra",
+            "platform": "modrinth",
+            "id": "rubidium-extra",
+            "dependencies": ["embeddium"],
+            "type": "optimization"
+        },
+        {
+            "name": "Alternate Current",
+            "platform": "modrinth",
+            "id": "alternate-current",
+            "ask": true,
+            "type": "optimization"
+        },
+        {
+            "name": "TrashSlot",
+            "platform": "modrinth",
+            "id": "trashslot",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "Command Macros",
+            "platform": "modrinth",
+            "id": "command-macros",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "Figura",
+            "platform": "modrinth",
+            "id": "figura",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Noisium",
+            "platform": "modrinth",
+            "id": "noisium",
+            "type": "optimization"
+        },
+        {
+            "name": "Armor Chroma",
+            "platform": "modrinth",
+            "id": "armor-chroma-for-fabric",
+            "type": "qol"
+        },
+        {
+            "name": "Shulker Tooltip",
+            "platform": "modrinth",
+            "id": "shulkerboxtooltip",
+            "type": "qol"
+        },
+        {
+            "name": "Tooltip Fix",
+            "platform": "modrinth",
+            "id": "tooltipfix",
+            "type": "basic"
+        },
+        {
+            "name": "Dark Loading Screen",
+            "platform": "modrinth",
+            "id": "dark-loading-screen",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Reese's Sodium Options",
+            "platform": "modrinth",
+            "id": "reeses-sodium-options",
+            "dependencies": ["sodium"],
+            "type": "optimization"
+        },
+        {
+            "name": "Time To Live",
+            "platform": "modrinth",
+            "id": "timetolive",
+            "ask": true,
+            "type": "qol"
+        },
+        {
+            "name": "Screenshot to Clipboard",
+            "platform": "modrinth",
+            "id": "screenshot-to-clipboard",
+            "type": "basic"
+        },
+        {
+            "name": "Advancement Info",
+            "platform": "modrinth",
+            "id": "advancementinfo",
+            "type": "qol"
+        },
+        {
+            "name": "Enchantment Descriptions",
+            "platform": "modrinth",
+            "id": "enchantment-descriptions",
+            "type": "qol"
+        },
+        {
+            "name": "Not Enough Animations",
+            "platform": "modrinth",
+            "id": "not-enough-animations",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Better Statistics Screen",
+            "platform": "modrinth",
+            "id": "better-stats",
+            "type": "qol"
+        },
+        {
+            "name": "LambDynamicLights",
+            "platform": "modrinth",
+            "id": "lambdynamiclights",
+            "type": "visual"
+        },
+        {
+            "name": "Pling",
+            "platform": "modrinth",
+            "id": "pling",
+            "type": "qol"
+        },
+        {
+            "name": "Ding",
+            "platform": "modrinth",
+            "id": "ding",
+            "incompatible": ["pling"],
+            "type": "qol"
+        },
+        {
+            "name": "Extreme Sound Muffler",
+            "platform": "modrinth",
+            "id": "extreme_sound_muffler",
+            "type": "qol"
+        },
+        {
+            "name": "Visuality",
+            "platform": "modrinth",
+            "id": "visuality",
+            "type": "visual"
+        },
+        {
+            "name": "ToroHealth Damage Indicators",
+            "platform": "modrinth",
+            "id": "torohealth-damage-indicators-updated",
+            "type": "qol"
+        },
+        {
+            "name": "Lightspeed",
+            "platform": "modrinth",
+            "id": "lightspeed",
+            "type": "optimization"
+        },
+        {
+            "name": "Resourcify",
+            "platform": "modrinth",
+            "id": "resourcify",
+            "type": "qol"
+        },
+        {
+            "name": "Jade",
+            "platform": "modrinth",
+            "id": "jade",
+            "type": "qol"
+        },
+        {
+            "name": "HWYLA",
+            "platform": "modrinth",
+            "id": "hwyla",
+            "incompatible": ["jade"],
+            "type": "qol"
+        },
+        {
+            "name": "Legendary Tooltips",
+            "platform": "modrinth",
+            "id": "legendary-tooltips",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Item Borders",
+            "platform": "modrinth",
+            "id": "item-borders",
+            "dependencies": ["legendary-tooltips"],
+            "type": "visual"
+        },
+        {
+            "name": "Sound Physics Remastered",
+            "platform": "modrinth",
+            "id": "sound-physics-remastered",
+            "ask": true,
+            "type": "other"
+        },
+        {
+            "name": "Easier Villager Trading",
+            "platform": "modrinth",
+            "id": "easiervillagertrading",
+            "type": "qol"
+        },
+        {
+            "name": "Language Reload",
+            "platform": "modrinth",
+            "id": "language-reload",
+            "type": "optimization"
+        },
+        {
+            "name": "Lazy Language Loader",
+            "platform": "modrinth",
+            "id": "lazy-language-loader",
+            "incompatible": ["language-reload"],
+            "type": "optimization"
+        },
+        {
+            "name": "Debugify",
+            "platform": "modrinth",
+            "id": "debugify",
+            "type": "optimization"
+        },
+        {
+            "name": "Early Loading Screen",
+            "platform": "modrinth",
+            "id": "early-loading-screen",
+            "type": "optimization"
+        },
+        {
+            "name": "Zoomify",
+            "platform": "modrinth",
+            "id": "zoomify",
+            "type": "qol"
+        },
+        {
+            "name": "Wakes",
+            "platform": "modrinth",
+            "id": "wakes",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Explosive Enhancement",
+            "platform": "modrinth",
+            "id": "explosive-enhancement",
+            "ask": true,
+            "type": "visual"
+        },
+        {
+            "name": "Better Clouds",
+            "platform": "modrinth",
+            "id": "better-clouds",
+            "type": "visual"
+        },
+        {
+            "name": "Falling Leaves",
+            "platform": "modrinth",
+            "id": "fallingleaves",
+            "type": "visual"
+        },
+        {
+            "name": "Blanket",
+            "platform": "modrinth",
+            "id": "blanket",
+            "type": "optimization"
+        },
+        {
+            "name": "Sodium Biome Blending Fix",
+            "platform": "modrinth",
+            "id": "unofficial-sodium-biome-blending-fix",
+            "dependencies": ["sodium"],
+            "type": "optimization"
+        },
+        {
+            "name": "Sodium Occlusion Culling Fix",
+            "platform": "modrinth",
+            "id": "occlusion-culling-fix-sodium",
+            "dependencies": ["sodium", "embeddium", "rubidium"],
+            "type": "optimization"
+        },
+        {
+            "name": "More Chat History",
+            "platform": "modrinth",
+            "id": "morechathistory",
+            "type": "basic"
+        },
+        {
+            "name": "Technopig",
+            "platform": "modrinth",
+            "id": "technomodel",
+            "type": "visual"
+        },
+        {
+            "name": "Slyde",
+            "platform": "modrinth",
+            "id": "slyde",
+            "type": "utility"
+        },
+        {
+            "name": "Borderless Mining",
+            "platform": "modrinth",
+            "id": "borderless-mining",
+            "type": "basic"
+        },
+        {
+            "name": "Eating Animation",
+            "platform": "modrinth",
+            "id": "eating-animation",
+            "type": "visual"
+        },
+        {
+            "name": "Eating Animations",
+            "platform": "modrinth",
+            "id": "eating-animations",
+            "incompatible": ["eating-animation"],
+            "type": "visual"
+        },
+        {
+            "name": "Boat Item View",
+            "platform": "modrinth",
+            "id": "boat-item-view",
+            "type": "qol"
+        },
+        {
+            "name": "Inventory Essentials",
+            "platform": "modrinth",
+            "id": "inventory-essentials",
+            "type": "basic"
+        },
+        {
+            "name": "InventoryHUD+",
+            "platform": "curseforge",
+            "id": "357540",
+            "type": "qol"
+        },
+        {
+            "name": "Tweakeroo",
+            "platform": "curseforge",
+            "id": "297344",
+            "type": "qol"
+        },
+        {
+            "name": "Stendhal",
+            "platform": "modrinth",
+            "id": "stendhal",
+            "type": "basic"
+        },
+        {
+            "name": "Symbol Chat",
+            "platform": "modrinth",
+            "id": "symbol-chat",
+            "type": "basic"
+        },
+        {
+            "name": "CreativeCore",
+            "platform": "modrinth",
+            "id": "creativecore",
+            "dependencies": ["ambientsounds"],
+            "type": "library"
+        },
+        {
+            "name": "Searchables",
+            "platform": "modrinth",
+            "id": "searchables",
+            "dependencies": ["controlling"],
+            "type": "library"
+        },
+        {
+            "name": "Bookshelf",
+            "platform": "modrinth",
+            "id": "bookshelf-lib",
+            "dependencies": ["enchantment-descriptions"],
+            "type": "library"
+        },
+        {
+            "name": "Balm",
+            "platform": "modrinth",
+            "id": "balm",
+            "dependencies": ["trashslot", "inventory-essentials"],
+            "type": "library"
+        },
+        {
+            "name": "Prism",
+            "platform": "modrinth",
+            "id": "prism-lib",
+            "dependencies": ["legendary-tooltips", "item-borders"],
+            "type": "library"
+        },
+        {
+            "name": "CompleteConfig",
+            "platform": "modrinth",
+            "id": "completeconfig",
+            "dependencies": ["ding"],
+            "type": "library"
+        },
+        {
+            "name": "Iceberg",
+            "platform": "modrinth",
+            "id": "iceberg",
+            "dependencies": ["item-borders"],
+            "type": "library"
+        },
+        {
+            "name": "Forge Config API Port",
+            "platform": "modrinth",
+            "id": "forge-config-api-port",
+            "dependencies": ["item-borders", "legendary-tooltips"],
+            "type": "library"
+        },
+        {
+            "name": "Fabric Language Kotlin",
+            "platform": "modrinth",
+            "id": "fabric-language-kotlin",
+            "dependencies": ["resourcify"],
+            "type": "library"
+        },
+        {
+            "name": "YetAnotherConfigLib",
+            "platform": "modrinth",
+            "id": "yacl",
+            "dependencies": ["better-clouds", "zoomify"],
+            "type": "library"
+        },
+        {
+            "name": "LibJF",
+            "platform": "modrinth",
+            "id": "libjf",
+            "dependencies": ["slyde"],
+            "type": "library"
+        },
+        {
+            "name": "Cloth Config API",
+            "platform": "modrinth",
+            "id": "cloth-config",
+            "dependencies": ["fastquit", "moreculling"]
+        },
+        {
+            "name": "Malilib",
+            "platform": "modrinth",
+            "id": "malilib",
+            "type": "library",
+            "dependencies": ["297344"]
+        }
+    ]
+}

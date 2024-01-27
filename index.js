@@ -7,6 +7,15 @@ const rl = require("node:readline/promises").createInterface({
     output: process.stdout
 })
 
+async function pipeToString(stream) {
+    let data = ""
+    stream.on("data", chunk => {
+        data += chunk
+    })
+    await new Promise(r => stream.on("end", r))
+    return data
+}
+
 function apiGet(url, options) {
     const request = https.get(url, options)
     return new Promise(async (resolve, reject) => {
@@ -14,14 +23,9 @@ function apiGet(url, options) {
 
         if (response.statusCode != 200) return reject()
 
-        let data = ""
-        response.on("data", chunk => {
-            data += chunk
-        })
         response.setTimeout(5000, reject)
-        response.on("end", () => {
-            resolve(JSON.parse(data))
-        })
+        const data = await pipeToString(response)
+        return resolve(JSON.parse(data))
     })
 }
 
@@ -59,6 +63,23 @@ async function download(source, destination) {
             data = JSON.parse(text)
         } else {
             throw new Error(`Mod json file at path "${process.env.JSON_PATH}" is not present`)
+        }
+    } else if (datasource == "http") {
+        if (!process.env.JSON_PATH) {
+            throw new Error("Mod json file path not present")
+        }
+        const request = https.get(process.env.JSON_PATH)
+        const response = await new Promise(r => request.on("response", r))
+        if (response.statusCode != 200) {
+            throw new Error(`HTTP ${response.statusCode} recieved from "${process.env.JSON_PATH}"`)
+        }
+        const text = await pipeToString(response)
+        if (!text || text == "") {
+            throw new Error(`No data recieved from "${process.env.JSON_PATH}"`)
+        }
+        const data = JSON.parse(text)
+        if (!data) {
+            throw new Error(`Invalid data recieved from "${process.env.JSON_PATH}"`)
         }
     } else {
         throw new Error(`Invalid mod data source "${datasource}"`)
