@@ -785,6 +785,13 @@
             "type": "visual"
         },
         {
+            "name": "Indium",
+            "platform": "modrinth",
+            "id": "indium",
+            "type": "library",
+            "dependencies": ["distanthorizons"]
+        },
+        {
             "name": "Animatica",
             "platform": "modrinth",
             "id": "animatica",
