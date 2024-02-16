@@ -779,6 +779,19 @@
             "ask": true
         },
         {
+            "name": "OptiGUI",
+            "platform": "modrinth",
+            "id": "optigui",
+            "type": "visual"
+        },
+        {
+            "name": "Animatica",
+            "platform": "modrinth",
+            "id": "animatica",
+            "type": "library",
+            "dependencies": ["optigui"]
+        },
+        {
             "name": "CreativeCore",
             "platform": "modrinth",
             "id": "creativecore",
