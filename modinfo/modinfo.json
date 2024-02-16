@@ -772,6 +772,13 @@
             "type": "optimization"
         },
         {
+            "name": "Distant Horizons",
+            "platform": "modrinth",
+            "id": "distanthorizons",
+            "type": "visual",
+            "ask": true
+        },
+        {
             "name": "CreativeCore",
             "platform": "modrinth",
             "id": "creativecore",
