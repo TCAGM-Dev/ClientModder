@@ -142,7 +142,7 @@ async function download(source, destination) {
             }
             modloader = [null, "forge", "cauldron", "liteloader", "fabric", "quilt", "neoforge"][basemodloader.type]
             console.log(`Modloader "${modloader}" detected`)
-            mcversion = data.BaseModLoader.minecraftVersion
+            mcversion = basemodloader.minecraftVersion
             console.log(`Version "${mcversion}" detected`)
         }
     }
