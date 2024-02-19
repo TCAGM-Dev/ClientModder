@@ -694,7 +694,8 @@
             "name": "Tweakeroo",
             "platform": "curseforge",
             "id": "297344",
-            "type": "qol"
+            "type": "qol",
+            "ask": true
         },
         {
             "name": "Stendhal",
