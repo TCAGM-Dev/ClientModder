@@ -136,6 +136,13 @@
             "type": "optimization"
         },
         {
+            "name": "FastChest",
+            "platform": "modrinth",
+            "id": "fastchest",
+            "type": "optimization",
+            "incompatible": ["ebe"]
+        },
+        {
             "name": "Concurrent Chunk Management Engine",
             "platform": "modrinth",
             "id": "c2me-fabric",
@@ -247,6 +254,12 @@
             "platform": "modrinth",
             "id": "notenoughcrashes",
             "type": "basic"
+        },
+        {
+            "name": "NBT Autocomplete",
+            "platform": "modrinth",
+            "id": "nbt-autocomplete",
+            "type": "qol"
         },
         {
             "name": "ESSENTIAL",
@@ -412,10 +425,17 @@
             "type": "qol"
         },
         {
+            "name": "Adaptive Tooltips",
+            "platform": "modrinth",
+            "id": "adaptive-tooltips",
+            "type": "basic"
+        },
+        {
             "name": "Tooltip Fix",
             "platform": "modrinth",
             "id": "tooltipfix",
-            "type": "basic"
+            "type": "basic",
+            "incompatible": ["adaptive-tooltips"]
         },
         {
             "name": "Dark Loading Screen",
@@ -501,10 +521,17 @@
             "type": "visual"
         },
         {
+            "name": "Damage Numbers",
+            "platform": "modrinth",
+            "id": "damagenumbers",
+            "type": "qol"
+        },
+        {
             "name": "ToroHealth Damage Indicators",
             "platform": "modrinth",
             "id": "torohealth-damage-indicators-updated",
-            "type": "qol"
+            "type": "qol",
+            "incompatible": ["damagenumbers"]
         },
         {
             "name": "Lightspeed",
@@ -778,6 +805,13 @@
             "id": "distanthorizons",
             "type": "visual",
             "ask": true
+        },
+        {
+            "name": "Blendium",
+            "platform": "modrinth",
+            "id": "blendium",
+            "type": "visual",
+            "dependencies": ["distanthorizons"]
         },
         {
             "name": "OptiGUI",
