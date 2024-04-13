@@ -451,6 +451,12 @@
             "type": "visual"
         },
         {
+            "name": "Clumps",
+            "platform": "modrinth",
+            "id": "clumps",
+            "type": "optimization"
+        },
+        {
             "name": "Reese's Sodium Options",
             "platform": "modrinth",
             "id": "reeses-sodium-options",
