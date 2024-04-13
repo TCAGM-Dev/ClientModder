@@ -438,6 +438,12 @@
             "incompatible": ["adaptive-tooltips"]
         },
         {
+            "name": "Allow Portal GUIs",
+            "platform": "modrinth",
+            "id": "allow-portal-guis",
+            "type": "basic"
+        },
+        {
             "name": "Dark Loading Screen",
             "platform": "modrinth",
             "id": "dark-loading-screen",
