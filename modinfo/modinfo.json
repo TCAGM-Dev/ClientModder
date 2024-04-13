@@ -469,6 +469,12 @@
             "type": "optimization"
         },
         {
+            "name": "Tool Stats",
+            "platform": "modrinth",
+            "id": "tool-stats",
+            "type": "qol"
+        },
+        {
             "name": "Reese's Sodium Options",
             "platform": "modrinth",
             "id": "reeses-sodium-options",
