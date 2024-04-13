@@ -463,6 +463,12 @@
             "type": "optimization"
         },
         {
+            "name": "FerriteCore",
+            "platform": "modrinth",
+            "id": "ferrite-core",
+            "type": "optimization"
+        },
+        {
             "name": "Reese's Sodium Options",
             "platform": "modrinth",
             "id": "reeses-sodium-options",
