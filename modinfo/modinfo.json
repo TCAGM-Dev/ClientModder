@@ -457,6 +457,12 @@
             "type": "optimization"
         },
         {
+            "name": "Video Tape",
+            "platform": "modrinth",
+            "id": "videotape",
+            "type": "optimization"
+        },
+        {
             "name": "Reese's Sodium Options",
             "platform": "modrinth",
             "id": "reeses-sodium-options",
