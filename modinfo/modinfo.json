@@ -149,9 +149,16 @@
             "type": "optimization"
         },
         {
+            "name": "Ksyxis",
+            "platform": "modrinth",
+            "id": "ksyxis",
+            "type": "optimization"
+        },
+        {
             "name": "FastLoad",
             "platform": "modrinth",
             "id": "fastload",
+            "incompatible": ["ksyxis"],
             "type": "optimization"
         },
         {
