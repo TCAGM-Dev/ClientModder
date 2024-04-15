@@ -501,9 +501,16 @@
             "type": "qol"
         },
         {
+            "name": "Idwtialsimmoedm",
+            "platform": "modrinth",
+            "id": "idwtialsimmoedm",
+            "type": "qol"
+        },
+        {
             "name": "Enchantment Descriptions",
             "platform": "modrinth",
             "id": "enchantment-descriptions",
+            "incompatible": ["idwtialsimmoedm"],
             "type": "qol"
         },
         {
