@@ -708,6 +708,7 @@
             "name": "Slyde",
             "platform": "modrinth",
             "id": "slyde",
+            "ask": true,
             "type": "utility"
         },
         {
