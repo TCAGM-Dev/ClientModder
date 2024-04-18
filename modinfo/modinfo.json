@@ -452,6 +452,12 @@
             "incompatible": ["adaptive-tooltips"]
         },
         {
+            "name": "Better log4j Config",
+            "platform": "modrinth",
+            "id": "better-log4j-config",
+            "type": "basic"
+        },
+        {
             "name": "Allow Portal GUIs",
             "platform": "modrinth",
             "id": "allow-portal-guis",
