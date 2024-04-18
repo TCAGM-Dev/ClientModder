@@ -426,9 +426,16 @@
             "type": "qol"
         },
         {
+            "name": "Peek",
+            "platform": "modrinth",
+            "id": "peek",
+            "type": "qol"
+        },
+        {
             "name": "Shulker Tooltip",
             "platform": "modrinth",
             "id": "shulkerboxtooltip",
+            "incompatible": ["peek"],
             "type": "qol"
         },
         {
