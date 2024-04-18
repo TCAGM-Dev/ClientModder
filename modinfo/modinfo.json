@@ -458,6 +458,12 @@
             "type": "basic"
         },
         {
+            "name": "Better Taskbar",
+            "platform": "modrinth",
+            "id": "better-taskbar",
+            "type": "basic"
+        },
+        {
             "name": "Dark Loading Screen",
             "platform": "modrinth",
             "id": "dark-loading-screen",
