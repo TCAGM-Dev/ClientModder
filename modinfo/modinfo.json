@@ -373,9 +373,16 @@
             "type": "optimization"
         },
         {
+            "name": "Collision Fix",
+            "platform": "modrinth",
+            "id": "collision-fix",
+            "type": "optimization"
+        },
+        {
             "name": "Entity Collision FPS Fix",
             "platform": "modrinth",
             "id": "entity-collision-fps-fix",
+            "incompatible": ["collision-fix"],
             "type": "optimization"
         },
         {
