@@ -393,6 +393,12 @@
             "type": "optimization"
         },
         {
+            "name": "Better Pie Chart",
+            "platform": "modrinth",
+            "id": "better-pie-chart",
+            "type": "basic"
+        },
+        {
             "name": "Alternate Current",
             "platform": "modrinth",
             "id": "alternate-current",
